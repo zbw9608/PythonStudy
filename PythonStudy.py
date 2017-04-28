@@ -13,7 +13,8 @@ def getFile(path): # 定义读取评论关键字的方法
         for keyword in file.readlines():
             lines = keyword.strip('\n') # 删除换行符
             match = re.findall(lines,bigfile) # 利用正则表达式找到匹配的字符串
-            count = match.__len__() # 计算符合的匹配出的字符串的个数
+            # print type(match) 关键字中的一行和bigfile里的所有行进行匹配，输出的是匹配到的字符串（关键字），类型是列表
+            count = match.__len__() # 计算符合的匹配出的字符串（列表）的个数
             dict_keyword[lines] = count # 将个数放入字典中
 
     with open(r'/home/zbw/桌面/homework/result.txt','a') as fileInput: # 新建一个文件放入结果,'a'表示在原结果之后继续输出
@@ -22,7 +23,7 @@ def getFile(path): # 定义读取评论关键字的方法
             fileInput.write(lines) # 字符串
             fileInput.write(')')
             fileInput.write('出现了')
-            fileInput.write(str(dict_keyword[lines])) # 强制转换成String类型
+            fileInput.write(str(dict_keyword[lines])) # 强制转换成String类型 print"1"
             fileInput.write('次')
             fileInput.write('\n')
         dict_keyword.clear() # 避免重复
